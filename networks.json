@@ -7,6 +7,14 @@
     "NodeRegistry": {
       "address": "0x16ca331641a9537e346e12C7403fDA014Da72F16",
       "startBlock": 24792800
+    },
+    "FleetManager": {
+      "address": "0x8D3c113805f970839940546D5ef88afE98Ba76E4",
+      "startBlock": 24792800
+    },
+    "W3bstreamRouter": {
+      "address": "0x1BFf17c79b5fa910cC77e95Ca82C7De26fC3C3b0",
+      "startBlock": 24792800
     }
   }
 }

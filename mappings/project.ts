@@ -1,4 +1,4 @@
-import { BigInt } from "@graphprotocol/graph-ts";
+import { Address, BigInt, Bytes } from "@graphprotocol/graph-ts";
 import { Blockchain, Project } from "../generated/schema";
 import { ProjectUpserted } from "../generated/ProjectRegistrar/ProjectRegistrar";
 
@@ -18,6 +18,7 @@ export function handleProjectRegister(event: ProjectUpserted): void {
   if (project === null) {
     project = new Project(event.params.projectId.toString());
     project.paused = false;
+    project.receiver = Bytes.fromI32(0);
     project.hash = event.params.hash;
     project.uri = event.params.uri;
     project.createdAt = event.block.timestamp;

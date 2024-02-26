@@ -17,6 +17,7 @@ type Project @entity {
     uri: String!
     paused: Boolean!
     nodes: [ProjectNode!]! @derivedFrom(field: "project")
+    receiver: Bytes!
     createdAt: BigInt!
     updatedAt: BigInt!
 }

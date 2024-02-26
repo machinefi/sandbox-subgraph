@@ -75,3 +75,27 @@ dataSources:
           handler: handleNodeAllow
         - event: NodeDisallowed(indexed uint256,indexed uint256)
           handler: handleNodeDisallow
+  - kind: ethereum/contract
+    name: W3bstreamRouter
+    network: iotex_testnet
+    source:
+      abi: W3bstreamRouter
+      address: "0x1BFf17c79b5fa910cC77e95Ca82C7De26fC3C3b0"
+      startBlock: 24792800
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      file: ./mappings/router.ts
+      entities:
+        - Blockchain
+        - Project
+        - Node
+      abis:
+        - name: W3bstreamRouter
+          file: ./abis/W3bstreamRouter.json
+      eventHandlers:
+        - event: ReceiverRegistered(indexed uint256,indexed address)
+          handler: handleReceiverRegister
+        - event: ReceiverUnregistered(indexed uint256,indexed address)
+          handler: handleReceiverUnregister
