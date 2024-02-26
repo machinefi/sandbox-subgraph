@@ -7,6 +7,7 @@
     "format:write": "prettier --write '*/*.{js,ts,yaml,yml,json}'",
     "lint": "eslint '*/*.{js,ts}'",
     "codegen": "graph codegen subgraph.yaml",
+    "build:iotex_testnet": "graph build subgraph.yaml --network iotex_testnet",
     "create:iotex_testnet": "graph create testnet/sandbox --node https://rpc.graph.mainnet.iotex.io/",
     "deploy:iotex_testnet": "graph deploy --product hosted-service --node https://rpc.graph.mainnet.iotex.io/ --ipfs https://ipfs.mainnet.iotex.io testnet/sandbox subgraph.yaml --network iotex_testnet"
   },

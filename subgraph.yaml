@@ -20,10 +20,6 @@ dataSources:
       abis:
         - name: NodeRegistry
           file: ./abis/NodeRegistry.json
-        # - name: FleetManager
-        #   file: ./abis/FleetManager.json
-        # - name: W3bstreamRouter
-        #   file: ./abis/W3bstreamRouter.json
       eventHandlers:
         - event: NodeRegistered(indexed address,indexed uint256,indexed address)
           handler: handleNodeRegister

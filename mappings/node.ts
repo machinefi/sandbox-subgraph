@@ -2,7 +2,7 @@ import { BigInt } from "@graphprotocol/graph-ts";
 import { Blockchain, Node } from "../generated/schema";
 import { NodeRegistered, NodeUpdated, Transfer } from "../generated/NodeRegistry/NodeRegistry";
 
-export function handleNodeRegister(event: NodeRegistered) {
+export function handleNodeRegister(event: NodeRegistered): void {
   let blockchain = Blockchain.load("IoTeX");
   if (blockchain === null) {
     blockchain = new Blockchain("IoTeX");
@@ -24,7 +24,7 @@ export function handleNodeRegister(event: NodeRegistered) {
   }
 }
 
-export function handleNodeUpdate(event: NodeUpdated) {
+export function handleNodeUpdate(event: NodeUpdated): void {
   let node = Node.load(event.params.nodeId.toString());
   if (node !== null) {
     node.operator = event.params.operator;
@@ -33,7 +33,7 @@ export function handleNodeUpdate(event: NodeUpdated) {
   }
 }
 
-export function handleNodeTransfer(event: Transfer) {
+export function handleNodeTransfer(event: Transfer): void {
   let node = Node.load(event.params.tokenId.toString());
   if (node !== null) {
     node.owner = event.params.to;
