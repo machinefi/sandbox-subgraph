@@ -18,7 +18,7 @@ export function handleProjectRegister(event: ProjectUpserted): void {
   if (project === null) {
     project = new Project(event.params.projectId.toString());
     project.paused = false;
-    project.receiver = Bytes.fromI32(0);
+    project.receiver = Bytes.fromHexString('0x0000000000000000000000000000000000000000');
     project.hash = event.params.hash;
     project.uri = event.params.uri;
     project.createdAt = event.block.timestamp;
