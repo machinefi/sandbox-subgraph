@@ -8,7 +8,8 @@ dataSources:
     network: iotex_testnet
     source:
       abi: NodeRegistry
-      startBlock: 100000
+      address: "0x16ca331641a9537e346e12C7403fDA014Da72F16"
+      startBlock: 24792800
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
@@ -28,3 +29,5 @@ dataSources:
           handler: handleNodeRegister
         - event: NodeUpdated(indexed uint256,indexed address)
           handler: handleNodeUpdate
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleNodeTransfer

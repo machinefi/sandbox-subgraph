@@ -1,6 +1,7 @@
 {
   "iotex_testnet": {
-    "Sandbox": {
+    "NodeRegistry": {
+      "address": "0x16ca331641a9537e346e12C7403fDA014Da72F16",
       "startBlock": 24792800
     }
   }
