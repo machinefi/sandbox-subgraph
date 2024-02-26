@@ -34,7 +34,8 @@ type Node @entity {
 }
 
 type ProjectNode @entity {
-    id: Bytes! # Set to `project.id.concat(node.id)`
+    id: ID!
     project: Project!
     node: Node!
+    binded: Boolean!
 }

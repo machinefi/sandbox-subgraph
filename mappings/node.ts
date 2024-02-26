@@ -13,7 +13,7 @@ export function handleNodeRegister(event: NodeRegistered): void {
   }
   blockchain.totalNode = blockchain.totalNode.plus(BigInt.fromI32(1));
   blockchain.save();
-  
+
   let node = Node.load(event.params.nodeId.toString());
   if (node === null) {
     node = new Node(event.params.nodeId.toString());
