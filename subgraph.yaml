@@ -1,0 +1,30 @@
+specVersion: 0.0.4
+description: W3bstream sandbox indexer
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: NodeRegistry
+    network: iotex_testnet
+    source:
+      abi: NodeRegistry
+      startBlock: 100000
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      file: ./mappings/node.ts
+      entities:
+        - Blockchain
+      abis:
+        - name: NodeRegistry
+          file: ./abis/NodeRegistry.json
+        # - name: FleetManager
+        #   file: ./abis/FleetManager.json
+        # - name: W3bstreamRouter
+        #   file: ./abis/W3bstreamRouter.json
+      eventHandlers:
+        - event: NodeRegistered(indexed address,indexed uint256,indexed address)
+          handler: handleNodeRegister
+        - event: NodeUpdated(indexed uint256,indexed address)
+          handler: handleNodeUpdate

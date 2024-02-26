@@ -1,0 +1,19 @@
+"""
+Blockchain
+"""
+type Blockchain @entity {
+    id: ID!
+    totalNode: BigInt!
+    totalReceiver: BigInt!
+}
+
+"""
+Node
+"""
+type Node @entity {
+    id: ID!
+    owner: Bytes!
+    operator: Bytes!
+    createdAt: BigInt!
+    updatedAt: BigInt!
+}
