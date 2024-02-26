@@ -4,7 +4,21 @@ Blockchain
 type Blockchain @entity {
     id: ID!
     totalNode: BigInt!
+    totalProject: BigInt!
     totalReceiver: BigInt!
+}
+
+"""
+Project
+"""
+type Project @entity {
+    id: ID!
+    hash: Bytes!
+    uri: String!
+    paused: Boolean!
+    nodes: [ProjectNode!]! @derivedFrom(field: "project")
+    createdAt: BigInt!
+    updatedAt: BigInt!
 }
 
 """
@@ -16,4 +30,11 @@ type Node @entity {
     operator: Bytes!
     createdAt: BigInt!
     updatedAt: BigInt!
+    projects: [ProjectNode!]! @derivedFrom(field: "node")
+}
+
+type ProjectNode @entity {
+    id: Bytes! # Set to `project.id.concat(node.id)`
+    project: Project!
+    node: Node!
 }

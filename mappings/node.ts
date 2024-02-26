@@ -7,6 +7,7 @@ export function handleNodeRegister(event: NodeRegistered): void {
   if (blockchain === null) {
     blockchain = new Blockchain("IoTeX");
     blockchain.totalNode = BigInt.zero();
+    blockchain.totalProject = BigInt.zero();
     blockchain.totalReceiver = BigInt.zero();
     blockchain.save();
   }

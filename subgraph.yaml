@@ -4,6 +4,28 @@ schema:
   file: ./schema.graphql
 dataSources:
   - kind: ethereum/contract
+    name: ProjectRegistrar
+    network: iotex_testnet
+    source:
+      abi: ProjectRegistrar
+      address: "0x02feBE78F3A740b3e9a1CaFAA1b23a2ac0793D26"
+      startBlock: 24398570
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      file: ./mappings/project.ts
+      entities:
+        - Blockchain
+        - Project
+        - Node
+      abis:
+        - name: ProjectRegistrar
+          file: ./abis/ProjectRegistrar.json
+      eventHandlers:
+        - event: ProjectUpserted(indexed uint64,string,bytes32)
+          handler: handleProjectRegister
+  - kind: ethereum/contract
     name: NodeRegistry
     network: iotex_testnet
     source:
@@ -17,6 +39,8 @@ dataSources:
       file: ./mappings/node.ts
       entities:
         - Blockchain
+        - Project
+        - Node
       abis:
         - name: NodeRegistry
           file: ./abis/NodeRegistry.json
