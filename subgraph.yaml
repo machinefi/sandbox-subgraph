@@ -25,6 +25,12 @@ dataSources:
       eventHandlers:
         - event: ProjectUpserted(indexed uint64,string,bytes32)
           handler: handleProjectRegister
+        - event: ProjectPaused(indexed uint64)
+          handler: handleProjectPause
+        - event: ProjectUnpaused(indexed uint64)
+          handler: handleProjectUnpause
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleProjectTransfer
   - kind: ethereum/contract
     name: NodeRegistry
     network: iotex_testnet

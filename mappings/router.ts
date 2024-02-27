@@ -20,7 +20,7 @@ export function handleReceiverRegister(event: ReceiverRegistered): void {
 export function handleReceiverUnregister(event: ReceiverUnregistered): void {
   let project = Project.load(event.params.projectId.toString());
   if (project !== null) {
-    project.receiver = Bytes.fromHexString('0x0000000000000000000000000000000000000000');
+    project.receiver = Bytes.fromHexString("0x0000000000000000000000000000000000000000");
     project.updatedAt = event.block.timestamp;
     project.save();
   }

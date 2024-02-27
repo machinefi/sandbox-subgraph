@@ -13,6 +13,7 @@ Project
 """
 type Project @entity {
     id: ID!
+    owner: Bytes!
     hash: Bytes!
     uri: String!
     paused: Boolean!
