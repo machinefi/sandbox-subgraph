@@ -7,7 +7,7 @@ import {
   Transfer,
 } from "../generated/ProjectRegistrar/ProjectRegistrar";
 
-export function handleProjectRegister(event: ProjectUpserted): void {
+export function handleProjectUpsert(event: ProjectUpserted): void {
   let blockchain = Blockchain.load("IoTeX");
   if (blockchain === null) {
     blockchain = new Blockchain("IoTeX");
@@ -36,7 +36,7 @@ export function handleProjectRegister(event: ProjectUpserted): void {
     project.hash = event.params.hash;
     project.uri = event.params.uri;
     project.updatedAt = event.block.timestamp;
-    blockchain.save();
+    project.save();
   }
 }
 

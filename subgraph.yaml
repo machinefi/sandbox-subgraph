@@ -24,7 +24,7 @@ dataSources:
           file: ./abis/ProjectRegistrar.json
       eventHandlers:
         - event: ProjectUpserted(indexed uint64,string,bytes32)
-          handler: handleProjectRegister
+          handler: handleProjectUpsert
         - event: ProjectPaused(indexed uint64)
           handler: handleProjectPause
         - event: ProjectUnpaused(indexed uint64)
