@@ -105,3 +105,5 @@ dataSources:
           handler: handleReceiverRegister
         - event: ReceiverUnregistered(indexed uint256,indexed address)
           handler: handleReceiverUnregister
+        - event: DataReceived(indexed address,bool,string)
+          handler: handleDataReceive

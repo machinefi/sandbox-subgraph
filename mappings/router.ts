@@ -1,6 +1,6 @@
-import { BigInt, Bytes } from "@graphprotocol/graph-ts";
-import { Blockchain, Project } from "../generated/schema";
-import { ReceiverRegistered, ReceiverUnregistered } from "../generated/W3bstreamRouter/W3bstreamRouter";
+import { BigInt, Bytes, ethereum } from "@graphprotocol/graph-ts";
+import { Blockchain, Project, RouterData } from "../generated/schema";
+import { DataReceived, ReceiverRegistered, ReceiverUnregistered } from "../generated/W3bstreamRouter/W3bstreamRouter";
 
 export function handleReceiverRegister(event: ReceiverRegistered): void {
   let blockchain = Blockchain.load("IoTeX");
@@ -24,4 +24,14 @@ export function handleReceiverUnregister(event: ReceiverUnregistered): void {
     project.updatedAt = event.block.timestamp;
     project.save();
   }
+}
+
+export function handleDataReceive(event: DataReceived): void {
+  const data = new RouterData(event.transaction.hash.toString());
+  data.success = event.params.success;
+  data.operator = event.params.operator;
+  data.input = event.transaction.input;
+  data.reason = event.params.revertReason;
+  data.createdAt = event.block.timestamp;
+  data.save();
 }

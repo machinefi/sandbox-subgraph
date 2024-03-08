@@ -41,3 +41,12 @@ type ProjectNode @entity {
     node: Node!
     binded: Boolean!
 }
+
+type RouterData @entity {
+    id: ID!
+    operator: Bytes!
+    success: Boolean!
+    reason: String
+    input: Bytes!
+    createdAt: BigInt!
+}
