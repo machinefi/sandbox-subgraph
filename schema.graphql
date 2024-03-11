@@ -47,6 +47,8 @@ type RouterData @entity {
     operator: Bytes!
     success: Boolean!
     reason: String
+    project: Project
+    receiver: Bytes
     input: Bytes!
     createdAt: BigInt!
 }

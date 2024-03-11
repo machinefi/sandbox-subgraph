@@ -27,7 +27,18 @@ export function handleReceiverUnregister(event: ReceiverUnregistered): void {
 }
 
 export function handleDataReceive(event: DataReceived): void {
-  const data = new RouterData(event.transaction.hash.toString());
+  const data = new RouterData(event.transaction.hash.toHexString());
+
+  const input = ethereum.decode(
+    '(uint256,address)',
+    Bytes.fromHexString('0x' + event.transaction.input.toHexString().substring(10, 138))
+  );
+  if (input) {
+    const decoded = input.toTuple();
+    data.project = decoded[0].toBigInt().toString();
+    data.receiver = decoded[1].toAddress();
+  }
+
   data.success = event.params.success;
   data.operator = event.params.operator;
   data.input = event.transaction.input;
